@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.3 (Python 3.8.0 on win32)" generated="20200411 13:12:30.031">
+<suite id="s1" name="PostEx" source="C:\Users\masaw\PycharmProjects\API_Demo\Scripts\PostEx.robot">
+<test id="s1-t1" name="Put_cust_reg">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200411 13:12:30.386" level="INFO">Creating Session using : alias=mysession, url=http://restapi.demoqa.com/customer, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200411 13:12:30.386" endtime="20200411 13:12:30.386"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>FirstName=Random1</arg>
+<arg>LastName=User1</arg>
+<arg>UserName=randomuser1</arg>
+<arg>Password=Test1231</arg>
+<arg>Email=randomuser2@gmail.com</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200411 13:12:30.387" level="INFO">${body} = {'FirstName': 'Random1', 'LastName': 'User1', 'UserName': 'randomuser1', 'Password': 'Test1231', 'Email': 'randomuser2@gmail.com'}</msg>
+<status status="PASS" starttime="20200411 13:12:30.387" endtime="20200411 13:12:30.387"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${header}</var>
+</assign>
+<msg timestamp="20200411 13:12:30.388" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20200411 13:12:30.388" endtime="20200411 13:12:30.388"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>/register</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200411 13:12:30.389" level="INFO">POST Request using : uri=/register, params=None, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.18.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+data={"FirstName": "Random1", "LastName": "User1", "UserName": "randomuser1", "Password": "Test1231", "Email": "randomuser2@gmail.com"} 
+json=None</msg>
+<msg timestamp="20200411 13:12:31.126" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200411 13:12:30.389" endtime="20200411 13:12:31.126"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200411 13:12:31.140" endtime="20200411 13:12:31.142"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" starttime="20200411 13:12:31.143" endtime="20200411 13:12:31.145"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${res_body}</var>
+</assign>
+<msg timestamp="20200411 13:12:31.148" level="INFO">${res_body} = {
+    "FaultId": "User already exists",
+    "fault": "FAULT_USER_ALREADY_EXISTS"
+}</msg>
+<status status="PASS" starttime="20200411 13:12:31.147" endtime="20200411 13:12:31.148"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${res_body}</arg>
+<arg>OPERATION_SUCCESS</arg>
+</arguments>
+<msg timestamp="20200411 13:12:31.150" level="FAIL">'{
+    "FaultId": "User already exists",
+    "fault": "FAULT_USER_ALREADY_EXISTS"
+}' does not contain 'OPERATION_SUCCESS'</msg>
+<status status="FAIL" starttime="20200411 13:12:31.149" endtime="20200411 13:12:31.150"></status>
+</kw>
+<status status="FAIL" starttime="20200411 13:12:30.385" endtime="20200411 13:12:31.150" critical="yes">'{
+    "FaultId": "User already exists",
+    "fault": "FAULT_USER_ALREADY_EXISTS"
+}' does not contain 'OPERATION_SUCCESS'</status>
+</test>
+<doc>Suite description</doc>
+<status status="FAIL" starttime="20200411 13:12:30.034" endtime="20200411 13:12:31.152"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="PostEx">PostEx</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

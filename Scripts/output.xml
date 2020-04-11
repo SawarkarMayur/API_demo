@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.3 (Python 3.8.0 on win32)" generated="20200411 13:13:31.733">
+<suite id="s1" name="First" source="C:\Users\masaw\PycharmProjects\API_Demo\Scripts\First.robot">
+<test id="s1-t1" name="Get_wheather_info">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>myscn</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200411 13:13:32.160" level="INFO">Creating Session using : alias=myscn, url=http://restapi.demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200411 13:13:32.160" endtime="20200411 13:13:32.160"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>myscn</arg>
+<arg>/utilities/weather/city/${city}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200411 13:13:32.163" level="INFO">GET Request using : uri=/utilities/weather/city/Mumbai, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.18.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200411 13:13:32.992" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200411 13:13:32.163" endtime="20200411 13:13:32.992"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200411 13:13:32.993" endtime="20200411 13:13:32.994"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" starttime="20200411 13:13:32.995" endtime="20200411 13:13:32.997"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.headers}</arg>
+</arguments>
+<status status="PASS" starttime="20200411 13:13:32.998" endtime="20200411 13:13:33.000"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${status_code}</var>
+</assign>
+<msg timestamp="20200411 13:13:33.001" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20200411 13:13:33.001" endtime="20200411 13:13:33.001"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${status_code}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" starttime="20200411 13:13:33.002" endtime="20200411 13:13:33.003"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200411 13:13:33.005" level="INFO">${body} = {
+    "City": "Mumbai",
+    "Temperature": "33 Degree celsius",
+    "Humidity": "66 Percent",
+    "WeatherDescription": "smoke",
+    "WindSpeed": "5.1 Km per hour",
+    "WindDirectionDegree": "270 Deg...</msg>
+<status status="PASS" starttime="20200411 13:13:33.004" endtime="20200411 13:13:33.005"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>Mumbai</arg>
+</arguments>
+<status status="PASS" starttime="20200411 13:13:33.006" endtime="20200411 13:13:33.007"></status>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<arguments>
+<arg>${response.headers}</arg>
+<arg>Content-Type</arg>
+</arguments>
+<assign>
+<var>${conType}</var>
+</assign>
+<msg timestamp="20200411 13:13:33.010" level="INFO">${conType} = application/json</msg>
+<status status="PASS" starttime="20200411 13:13:33.009" endtime="20200411 13:13:33.010"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${conType}</arg>
+<arg>application/json</arg>
+</arguments>
+<status status="PASS" starttime="20200411 13:13:33.011" endtime="20200411 13:13:33.012"></status>
+</kw>
+<tags>
+<tag>MS</tag>
+</tags>
+<status status="PASS" starttime="20200411 13:13:32.160" endtime="20200411 13:13:33.013" critical="yes"></status>
+</test>
+<doc>Suite description</doc>
+<status status="PASS" starttime="20200411 13:13:31.737" endtime="20200411 13:13:33.016"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">MS</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="First">First</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
