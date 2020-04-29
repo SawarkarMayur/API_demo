@@ -10,7 +10,7 @@ ${base_url}   http://restapi.demoqa.com/customer
 
 Put_cust_reg
     create session  mysession  ${base_url}
-    ${body}=  create dictionary  FirstName=Random1  LastName=User1  UserName=randomuser1  Password=Test1231  Email=randomuser2@gmail.com
+    ${body}=  create dictionary  FirstName=NewUser123  LastName=Userrao  UserName=randomuser45  Password=Test1231  Email=randomuser45@gmail.com
     ${header}=  create dictionary  Content-Type=application/json
     ${response}=  post request  mysession   /register  data=${body}  headers=${header}
 

@@ -1,0 +1,21 @@
+{
+  "firstName": "Steve",
+  "lastName" : "rogers",
+  "age"      : 26,
+  "address"  : {
+    "streetAddress": "42 street",
+    "city"         : "New York",
+	"state"		   : "NY",	
+    "postalCode"   : "630-0192"
+  },
+  "phoneNumbers": [
+    {
+      "type"  : "iPhone",
+      "number": "0123-4567-8888"
+    },
+    {
+      "type"  : "home",
+      "number": "0123-4567-8910"
+    }
+  ]
+}
