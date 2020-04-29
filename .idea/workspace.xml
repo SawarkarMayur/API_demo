@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2b9aa8b-75a9-4253-abee-39ae7e873cd2" name="Default Changelist" comment="" />
+    <list default="true" id="a2b9aa8b-75a9-4253-abee-39ae7e873cd2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Res/log.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Res/output.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Res/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resxml/log.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resxml/output.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resxml/report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/BasicAuth.robot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/BearerAuth.robot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/GoogleMapsAPI.robot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/HeaderNcoockies.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Result/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Result/log.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Result/output.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Result/output.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Result/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Result/report.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +31,16 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1ZsyngxgsoTeziulY2uv8yN2vGf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="last_opened_file_path" value="E:/Repo/CWP/onebss-qa-auto/OneBSS-CustomerWebPortal-Automation/Web" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -42,6 +66,32 @@
       <option name="presentableId" value="Default" />
       <updated>1585642264716</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added samples for xml and Json parsing and validations">
+      <created>1588156798453</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588156798453</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Added samples for xml and Json parsing and validations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added samples for xml and Json parsing and validations" />
   </component>
 </project>

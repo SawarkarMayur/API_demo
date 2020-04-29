@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.0 on win32)" generated="20200429 18:53:31.741" rpa="false">
+<suite id="s1" name="Scripts" source="C:\Users\masaw\PycharmProjects\API_Demo\Scripts">
+<suite id="s1-s1" name="GoogleMapsAPI" source="C:\Users\masaw\PycharmProjects\API_Demo\Scripts\GoogleMapsAPI.robot">
+<test id="s1-s1-t1" name="GoogleMapPlacesAPI_TC">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200429 18:53:32.395" level="INFO">Creating Session using : alias=mysession, url=https://maps.googleapis.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200429 18:53:32.394" endtime="20200429 18:53:32.395"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>location=-33.8670522,151.1957362</arg>
+<arg>radius=500</arg>
+<arg>types=food</arg>
+<arg>name=harbour</arg>
+<arg>key=AIzaSyDfF7_uf-cLJxM9SqZcoipt0RjoWRK5uQ4</arg>
+</arguments>
+<assign>
+<var>${params}</var>
+</assign>
+<msg timestamp="20200429 18:53:32.396" level="INFO">${params} = {'location': '-33.8670522,151.1957362', 'radius': '500', 'types': 'food', 'name': 'harbour', 'key': 'AIzaSyDfF7_uf-cLJxM9SqZcoipt0RjoWRK5uQ4'}</msg>
+<status status="PASS" starttime="20200429 18:53:32.396" endtime="20200429 18:53:32.396"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${req_uri}</arg>
+<arg>params=${params}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200429 18:53:32.397" level="INFO">GET Request using : uri=/maps/api/place/nearbysearch/json?, params={'location': '-33.8670522,151.1957362', 'radius': '500', 'types': 'food', 'name': 'harbour', 'key': 'AIzaSyDfF7_uf-cLJxM9SqZcoipt0RjoWRK5uQ4'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.18.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200429 18:53:33.441" level="INFO">c:\python\lib\site-packages\urllib3\connectionpool.py:853: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn((</msg>
+<msg timestamp="20200429 18:53:33.443" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200429 18:53:32.397" endtime="20200429 18:53:33.443"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<msg timestamp="20200429 18:53:33.445" level="INFO">200</msg>
+<status status="PASS" starttime="20200429 18:53:33.444" endtime="20200429 18:53:33.445"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<msg timestamp="20200429 18:53:33.449" level="INFO">{
+   "html_attributions" : [],
+   "next_page_token" : "CqQCHAEAAEVwNQsOyRQwnByHGKch6IXAyfarXBBFlVe3BhTM8gcvyraodECbE2VpD_ZKaQTVLMsM6lFF5NPOnpiqgQMhPPjO0l48Iwm8xnOIaChRvV8Z595Sbj9Dtl8SYDUqEf-1L4xuurVebgTvvK0rB5R-Ft0fesKHXeiwdkGJiRRQFUTxmTVUkFYlNQ6OpXpbcS2h_MFJgd0gRObTkz5DUqf3384QoT2GEuXrSVnyQR9S-824VsHjBMqvk2omgOoDr1z7Uvht2QAvWTFnlbj_sVRWC9iJp_9k0hFFTeGugf30u94lA7cOLnVUmJDaxoMywAdd1tRvKhZEAa8b3mazLPmkwsjVHBG7F3r9uL_-5HM1CNvCUDqsc2fEXV9nJLkO4VTimhIQMaK79y7FOUgbHwjTT3pt6hoUW-j5V4ay11LCPKKgYyw-40_d4sw",
+   "results" : [
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8711234,
+               "lng" : 151.1988579
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86977357010728,
+                  "lng" : 151.2002077298927
+               },
+               "southwest" : {
+                  "lat" : -33.87247322989273,
+                  "lng" : 151.1975080701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "cbdb9bdfa9d40e704c628f261adeef9875a5ccd7",
+         "name" : "Harbour Bar &amp; Kitchen",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 960,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/105573023028756482555\"\u003eHarbour Bar &amp;amp; Kitchen\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAy95q23p9J2JUFGsaLIpmc5q2Vaesn-0rJeSBE_9CUnVwSBpnKc5G671OC8tD3G55I5fwWjxxGFH0qYa8nTH_FU9D0gxJKfYOQ82gfOPbn7gXGLb2wt0Ri74Wt-ZCF6_8EhALyBhvcY59RNNj6fJzE8bfGhRnu22e--jzNKpwSJVl5hLDALm9nA",
+               "width" : 960
+            }
+         ],
+         "place_id" : "ChIJkeO_AzquEmsRUpGQn1ZK7Tg",
+         "plus_code" : {
+            "compound_code" : "45HX+HG Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+HG"
+         },
+         "price_level" : 2,
+         "rating" : 4,
+         "reference" : "ChIJkeO_AzquEmsRUpGQn1ZK7Tg",
+         "scope" : "GOOGLE",
+         "types" : [ "bar", "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 369,
+         "vicinity" : "447 Harbourside shopping centre, Level 2, 2-10 Darling Drive, Darling Harbour"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8711404,
+               "lng" : 151.1978252
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86979192010728,
+                  "lng" : 151.1991619798927
+               },
+               "southwest" : {
+                  "lat" : -33.87249157989272,
+                  "lng" : 151.1964623201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png",
+         "id" : "64725a86605e7682a694c5383338e95b8993b398",
+         "name" : "ibis Sydney Darling Harbour",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 4800,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/117979886491291086792\"\u003eibis Sydney Darling Harbour\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAuvhsFhqGQ93GWk5iwrETVtG7voqcWFZeiKdF86dyhMQPTtFTWT6aPbisLUoXOMLrC05To7ii_Z7TkTv9tsH8FDQ06E0tHn15y2UqPAjIMg8M51aVJ2TkH2fazx8eW4gDEhDrT9ks8BH2i8H53v_pchVGGhT79xIcTs_H7cHFX6jyprCz_1jg0g",
+               "width" : 7194
+            }
+         ],
+         "place_id" : "ChIJFfyzTTeuEmsRuMxvFyNRfbk",
+         "plus_code" : {
+            "compound_code" : "45HX+G4 Pyrmont, New South Wales, Australia",
+            "global_code" : "4RRH45HX+G4"
+         },
+         "rating" : 3.9,
+         "reference" : "ChIJFfyzTTeuEmsRuMxvFyNRfbk",
+         "scope" : "GOOGLE",
+         "types" : [ "lodging", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 1774,
+         "vicinity" : "Darling Harbour, 70 Murray St, Pyrmont"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.87228169999999,
+               "lng" : 151.2014077
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.87093187010727,
+                  "lng" : 151.2027575298928
+               },
+               "southwest" : {
+                  "lat" : -33.87363152989271,
+                  "lng" : 151.2000578701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "08faf34dac137d99ad1fb7897d4a28c146798de1",
+         "name" : "Harbour Jet",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 1365,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/117436932998133975095\"\u003eHarbour Jet\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA-ne4qS_AwDL6NPj3cw15NZOZIyqGnfOh0SEvI_oLy2Ed0fmK11pGkY24pM5bQP5O9NaH9xkvCbQTVHwEzF5W-aLVRLYovi2MYZ7jY42LDZoF8VGt8cPsilS615SWdo8jEhAn1a2ACwpymThCk7gZCIBGGhSk5I31KxbkSGWbslFjt68KVqOU-w",
+               "width" : 2048
+            }
+         ],
+         "place_id" : "ChIJ82q515-LtAERpX0qh60JsuU",
+         "plus_code" : {
+            "compound_code" : "46H2+3H Sydney, New South Wales, Australia",
+            "global_code" : "4RRH46H2+3H"
+         },
+         "rating" : 4.9,
+         "reference" : "ChIJ82q515-LtAERpX0qh60JsuU",
+         "scope" : "GOOGLE",
+         "types" : [ "travel_agency", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 14,
+         "vicinity" : "Cockle Bay Marina Darling Harbour"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8706375,
+               "lng" : 151.1990838
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86934117010728,
+                  "lng" : 151.2001212298927
+               },
+               "southwest" : {
+                  "lat" : -33.87204082989272,
+                  "lng" : 151.1974215701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+         "id" : "5f9910298f074d812a18cb5da26bf3e9d621277e",
+         "name" : "The Port Darling Harbour",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 3840,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/117099864499399442519\"\u003eWai Kit Chan\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAJhtlGsExSHDALPrl9WgTQzIiHGhpIHH9SNpmcs4zjerWDKP9x3815vJqIobbNKtJHhguiH93_rqWhvzVZZ3Yv8YwAGTmf85EGZeani3qNClXLnMwqDj6oG9iICk9wpr2EhA_d9_5YCl15s6izaZ430N8GhRROYB5iFGzx8Ln6hLMVi5aVg7umA",
+               "width" : 5120
+            }
+         ],
+         "place_id" : "ChIJ3UVlDzquEmsREslgffvf8wU",
+         "plus_code" : {
+            "compound_code" : "45HX+PJ Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+PJ"
+         },
+         "price_level" : 2,
+         "rating" : 3.8,
+         "reference" : "ChIJ3UVlDzquEmsREslgffvf8wU",
+         "scope" : "GOOGLE",
+         "types" : [ "bar", "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 379,
+         "vicinity" : "2-10 Darling Dr, Darling Harbour"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.870697,
+               "lng" : 151.198064
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86931597010728,
+                  "lng" : 151.1992159298927
+               },
+               "southwest" : {
+                  "lat" : -33.87201562989272,
+                  "lng" : 151.1965162701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png",
+         "id" : "5eec1aacfe6afff43bf93a03445f8a3db7e336a1",
+         "name" : "Darling Harbour Getaway",
+         "photos" : [
+            {
+               "height" : 960,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/117223334241619138741\"\u003eTanya Hay\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAKkukeBBapY8p4WnFj_KTDOhoxpBTEdaNQss1tUmUv1eGaV_wuNMtuL6aT3WnyBHt9r_HZcQrItbutfkFfljlsxTBBvMcOne_7F6SHLnRR1CQeDCI2PAQGnZDTXAEs-6CEhA--DKLjqq1GB7ZbbKHQb5sGhQ76fU6uFl05WtpgiABM40xGCEkYA",
+               "width" : 1280
+            }
+         ],
+         "place_id" : "ChIJC8RNUDeuEmsRRqQ13SLiJdU",
+         "plus_code" : {
+            "compound_code" : "45HX+P6 Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+P6"
+         },
+         "rating" : 4.8,
+         "reference" : "ChIJC8RNUDeuEmsRRqQ13SLiJdU",
+         "scope" : "GOOGLE",
+         "types" : [ "lodging", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 11,
+         "vicinity" : "50 Murray St, Sydney"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8696742,
+               "lng" : 151.2011641
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86785682010728,
+                  "lng" : 151.2029922798927
+               },
+               "southwest" : {
+                  "lat" : -33.87055647989272,
+                  "lng" : 151.2002926201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "07352c9fda094ce86a9ee46ea3e3d7e55fcc52ab",
+         "name" : "Aquarium, Darling Harbour",
+         "photos" : [
+            {
+               "height" : 5472,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/116518878582012413804\"\u003echen lu\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAqA9sSjAwUizDItGgW9EcmiaMNtuR8S8mNhsZ-NAPK7J_D_MsZN91m2Eq7Ohz-49uuzsGCgmnxFAKlVdHyGKC4F7vSZ611Oig-qEfCKgnVCyDHzvpcR-tGNdprtUeyfatEhCGmmpv1PQgFUcn9a92mUULGhS6H7IIu-X_osJsiMuJ1GQHe2kEsg",
+               "width" : 7296
+            }
+         ],
+         "place_id" : "ChIJL6TNrjmuEmsR2u-0RwVMPXY",
+         "plus_code" : {
+            "compound_code" : "46J2+4F Sydney, New South Wales, Australia",
+            "global_code" : "4RRH46J2+4F"
+         },
+         "rating" : 4.4,
+         "reference" : "ChIJL6TNrjmuEmsR2u-0RwVMPXY",
+         "scope" : "GOOGLE",
+         "types" : [ "transit_station", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 118,
+         "vicinity" : "Sydney"
+      },
+      {
+         "business_status" : "CLOSED_TEMPORARILY",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8712304,
+               "lng" : 151.1988764
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86986342010728,
+                  "lng" : 151.2000074298927
+               },
+               "southwest" : {
+                  "lat" : -33.87256307989272,
+                  "lng" : 151.1973077701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+         "id" : "1c9c49c26942c5b8d454c16dda92266fd0922d1c",
+         "name" : "Connor Darling Harbour",
+         "permanently_closed" : true,
+         "photos" : [
+            {
+               "height" : 3024,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/110640888053700474703\"\u003eJamie Gillespie\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAlkeiIPk17i36U91PZ-tRYTPW1UHepPg-ZIDCNLl0T0VOvmln29jk6wG85YGG3wsy4DcK5AztOEqVp1aqhi20f2QG0nv8oe3QAFwa8PXiyZmmVJbNgtRqJE6FMHsJNtmBEhAeDy1etbPKlgntWWF6mNtoGhTcpU2I7a1r8qyL_LRTrcNgCgi1_A",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJVfbo19-tEmsRDpEAuOorR-Y",
+         "plus_code" : {
+            "compound_code" : "45HX+GH Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+GH"
+         },
+         "rating" : 4.5,
+         "reference" : "ChIJVfbo19-tEmsRDpEAuOorR-Y",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "clothing_store", "store", "establishment" ],
+         "user_ratings_total" : 26,
+         "vicinity" : "Harbourside Shopping Centre, 1217A/2-10 Darling Dr, Darling Harbour"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8674634,
+               "lng" : 151.2020689
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86612002010727,
+                  "lng" : 151.2033339798927
+               },
+               "southwest" : {
+                  "lat" : -33.86881967989272,
+                  "lng" : 151.2006343201072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "1c33d8abcf26b28fe11f2d4838c9b4121c0bb7a8",
+         "name" : "Lal Qila Darling Harbour",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 600,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/104552930294080013757\"\u003eLal Qila Darling Harbour\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAARuwdVvTiHNgWpsovVLBW1sZ0pq8221S-BWYeMhqGGWGuTjUDg-i3rdbDyY4TFqBQlxkj6ts_DPgDf6IYNiOvGssXxHXX9V9ntCTwnxEPEqgV3-iGB3_4n22wUnERreT-EhBeBpwWTt4q9aRUCb2lXAfTGhQkPx23UVeCMMx3rEFGbrNBUU9QBA",
+               "width" : 860
+            }
+         ],
+         "place_id" : "ChIJ2Uvo-jquEmsRNhEao96WMwk",
+         "plus_code" : {
+            "compound_code" : "46M2+2R Sydney, New South Wales, Australia",
+            "global_code" : "4RRH46M2+2R"
+         },
+         "price_level" : 2,
+         "rating" : 4,
+         "reference" : "ChIJ2Uvo-jquEmsRNhEao96WMwk",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 1570,
+         "vicinity" : "30 Lime St, Darling Harbour"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8704833,
+               "lng" : 151.1987843
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86882142010728,
+                  "lng" : 151.1997094298927
+               },
+               "southwest" : {
+                  "lat" : -33.87152107989272,
+                  "lng" : 151.1970097701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "4cb086184d76e1e78781089fda4ac0072f71e358",
+         "name" : "Pancakes on the Rocks",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 2988,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/108468654687046789823\"\u003ePancakes on the Rocks\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAglRgt715fOSSYF0zrexT7rWXbdFVimUjyD7yB3E1CNZQApiPXSguR8Uw3kIYdh8ej2fvBQiml5il-bo6G7_4IIgJVhVsHlgynjuM4-pM3AGfM4XmfjoeN8cJc0AJjZi_EhB4RXtMEzXQbXCivulzjlr-GhQWneumYPCvYMpPwWEJkuRacJAxBA",
+               "width" : 5312
+            }
+         ],
+         "place_id" : "ChIJK4NnVUCuEmsRFyTLcJ7ZvBU",
+         "plus_code" : {
+            "compound_code" : "45HX+RG Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+RG"
+         },
+         "rating" : 4.1,
+         "reference" : "ChIJK4NnVUCuEmsRFyTLcJ7ZvBU",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 1552,
+         "vicinity" : "Harbourside Shopping Centre, Shop 230, Darling Dr, Darling Harbour"
+      },
+      {
+         "business_status" : "CLOSED_TEMPORARILY",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8707409,
+               "lng" : 151.1989615
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86937432010728,
+                  "lng" : 151.2002799298927
+               },
+               "southwest" : {
+                  "lat" : -33.87207397989272,
+                  "lng" : 151.1975802701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "8bcbe06e54aee1530f383ff96c83f5d9bbaee54d",
+         "name" : "Hurricane's Grill Darling Harbour",
+         "permanently_closed" : true,
+         "photos" : [
+            {
+               "height" : 533,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/103760746154304436690\"\u003eHurricane&amp;#39;s Grill\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAmNq8CikQRb8p_4gqXcurmq41_LplhFGYc_qhA8Fu8UVShEC4ytFBUnwGC2M41J0pX8sMdxJbZ67NfiK3Wt8y7Xd4WvlVoHKeAOmtdEk7bvetoop_m5Sjt9QKTaEpB8-kEhAFnjoFQxkQbYTzO6hIBTbsGhR5YJgQE_fX-r6Okb6DLd-7ix4u_Q",
+               "width" : 800
+            }
+         ],
+         "place_id" : "ChIJL7SCpzCuEmsRN8MD9vPXmOs",
+         "plus_code" : {
+            "compound_code" : "45HX+PH Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+PH"
+         },
+         "price_level" : 2,
+         "rating" : 3.9,
+         "reference" : "ChIJL7SCpzCuEmsRN8MD9vPXmOs",
+         "scope" : "GOOGLE",
+         "types" : [ "bar", "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 1746,
+         "vicinity" : "433/436 Darling Dr, Sydney"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.870353,
+               "lng" : 151.1978921
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86899067010728,
+                  "lng" : 151.1991552298927
+               },
+               "southwest" : {
+                  "lat" : -33.87169032989272,
+                  "lng" : 151.1964555701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "2fd44d525e426ea03fea347d1dbd75aae7f5463b",
+         "name" : "Darling Harbour Views",
+         "photos" : [
+            {
+               "height" : 2988,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/104599068505428314863\"\u003ePeter Stella Isaac\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAS_pZWWSAcBQCG6y12cryDWFe-4XAzWbCyL_SvS1CUuXGn3aoVXZOJuDx60Lbp89qK1PQkMsD8-360CTCiOWJIQNh-lF0vv5AaYYVcPi800-U4iqtjBEEMAv1NyYSzIq7EhBfZut0w6ajNwbi0hJcV7xXGhTzMGP5JbTApx3-N-phDRLEYEzXiw",
+               "width" : 5312
+            }
+         ],
+         "place_id" : "ChIJswapWjeuEmsR_QZi2zrhtRI",
+         "plus_code" : {
+            "compound_code" : "45HX+V5 Pyrmont, New South Wales, Australia",
+            "global_code" : "4RRH45HX+V5"
+         },
+         "rating" : 4.9,
+         "reference" : "ChIJswapWjeuEmsR_QZi2zrhtRI",
+         "scope" : "GOOGLE",
+         "types" : [ "real_estate_agency", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 7,
+         "vicinity" : "50 Murray St, Pyrmont"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8717035,
+               "lng" : 151.1986463
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.87034347010727,
+                  "lng" : 151.2000324298927
+               },
+               "southwest" : {
+                  "lat" : -33.87304312989271,
+                  "lng" : 151.1973327701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "cdddbd8cf0d3611c40a0b9f21ea319de6d590e96",
+         "name" : "McDonald's Harbourside",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 480,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/104818123368891022442\"\u003eWaqar Randhawa\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAGd0kSmDmMp3Vk8Acr59Q_CFenFioA3cE2mKWsuhN25GBjCO5031MpFT-Vo6n7Suf02YS9D3TZiErne_7wlrIku3hlUc__nmJY6BtiMb2eUKVUWjZqhyOUg6_2H4T53UOEhD25rzdAD8bSmvHAyguyHwpGhTclwbLPXcI9J0izbc8Itszl9LDhQ",
+               "width" : 720
+            }
+         ],
+         "place_id" : "ChIJL7SCpzCuEmsR_LMvJsyshoE",
+         "plus_code" : {
+            "compound_code" : "45HX+8F Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+8F"
+         },
+         "price_level" : 1,
+         "rating" : 3.6,
+         "reference" : "ChIJL7SCpzCuEmsR_LMvJsyshoE",
+         "scope" : "GOOGLE",
+         "types" : [
+            "meal_takeaway",
+            "cafe",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "store",
+            "establishment"
+         ],
+         "user_ratings_total" : 504,
+         "vicinity" : "Harbourside Shopping Centre, Darling Harbour"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8716768,
+               "lng" : 151.1986712
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.87032852010728,
+                  "lng" : 151.2000502798927
+               },
+               "southwest" : {
+                  "lat" : -33.87302817989273,
+                  "lng" : 151.1973506201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+         "id" : "45d19bd0ab3a62d3c431728ec1008fd25a426785",
+         "name" : "World Newsagency",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 2952,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/110640888053700474703\"\u003eJamie Gillespie\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAJmFHJrb-QW3UaU23OrLKmj5aFA_GroOWtZkCBEHOehJ-gHGHPebDlawmNeUfqomibLpYy3xaD4QQPO80p_yzVsh-JoRwfymqt4Evabs7KEpPAh-oyXbrkl1VSQRnwl3zEhABxlLKQcIAR56epylq2ZVVGhRZ6LrmHkDH6y2LCk3DyT9uBGOfiw",
+               "width" : 5248
+            }
+         ],
+         "place_id" : "ChIJq-HIcDquEmsRVc6HS1QP3s8",
+         "plus_code" : {
+            "compound_code" : "45HX+8F Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+8F"
+         },
+         "rating" : 3.2,
+         "reference" : "ChIJq-HIcDquEmsRVc6HS1QP3s8",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "store", "establishment" ],
+         "user_ratings_total" : 17,
+         "vicinity" : "2-10 Darling Dr, Darling Harbour"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.866135,
+               "lng" : 151.200775
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86478517010729,
+                  "lng" : 151.2021248298927
+               },
+               "southwest" : {
+                  "lat" : -33.86748482989273,
+                  "lng" : 151.1994251701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "f27d03d7dd545b4aee5558634dfe9c01a7f71515",
+         "name" : "Darling Harbour Wharf 1",
+         "photos" : [
+            {
+               "height" : 4000,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/107755640736541028674\"\u003eJonah Deller\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAL5jyYIVBL9ieZcoUviuaqJFyKRShefgbWt1RRj40T-twSRIzff2bt6h8dXtogA9Qq5X9yXQ-5OmA-TX6aLlpBDg2SdxaQW7tCNd3tUurSQDrWEcwqA6qYmBpkLVJ_dbqEhDVBuXMh-fN_GeA0-SrUzK7GhT0Ldqvx87qxAFM2g3h3J42RlfGmQ",
+               "width" : 6033
+            }
+         ],
+         "place_id" : "ChIJ29t_hUeuEmsRaLqlycOVzp4",
+         "plus_code" : {
+            "compound_code" : "46M2+G8 Sydney, New South Wales, Australia",
+            "global_code" : "4RRH46M2+G8"
+         },
+         "rating" : 4.2,
+         "reference" : "ChIJ29t_hUeuEmsRaLqlycOVzp4",
+         "scope" : "GOOGLE",
+         "types" : [ "transit_station", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 9,
+         "vicinity" : "New South Wales, Australia"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8656296,
+               "lng" : 151.1913606
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86425377010728,
+                  "lng" : 151.1928181298927
+               },
+               "southwest" : {
+                  "lat" : -33.86695342989272,
+                  "lng" : 151.1901184701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "45e0e4466cf34d442165b740bf51d2676c5c198a",
+         "name" : "QC on the Harbour",
+         "photos" : [
+            {
+               "height" : 3024,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/101088877624949925312\"\u003eMihye Kwon\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAM-e5PvNZvQWt615vF1FTranKwK4F9wfatWgc-qntSIFIvmqiiwU4EW0i70l7ywQn7DsLcof_jezdjaq4YFwzNRiY8OzogPJlgmN88WKLt5Msj5_VGEofUxXHE3Do38g3EhARolQlbkG6Cb83aHXLqSb_GhSi-Rz4tYX_npxRTy_GD_7JlZjdOg",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJl59lwDWuEmsRr23WOtxXioc",
+         "plus_code" : {
+            "compound_code" : "45MR+PG Pyrmont, New South Wales, Australia",
+            "global_code" : "4RRH45MR+PG"
+         },
+         "rating" : 4.8,
+         "reference" : "ChIJl59lwDWuEmsRr23WOtxXioc",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 5,
+         "vicinity" : "3 Harris St, Pyrmont"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8703948,
+               "lng" : 151.196835
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86898067010728,
+                  "lng" : 151.1981388298927
+               },
+               "southwest" : {
+                  "lat" : -33.87168032989273,
+                  "lng" : 151.1954391701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png",
+         "id" : "1f23e4cfa2bd15544c934b22d60daedbcbfe026e",
+         "name" : "Sydney Darling Harbour Hotel",
+         "photos" : [
+            {
+               "height" : 3024,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/114658609503160450490\"\u003eLejan Alejandro\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAik0IPScNU_cWgnzXNt1qjNiBIDq_gT1kKg7UOcn6ShWOowFS9XChurXD3cLb7pomCXxOTx_HMVuWCB1sceS8guwC_uFE_5SF4fXf78SX6FzVuEbnauVYgRes91hF86BCEhCijtSIQ5l-PUElgf7-Io6rGhRDjVuIgDy5yPDeUXigk212OaNEmg",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJbVjtNjeuEmsRq-6prwTK24Y",
+         "plus_code" : {
+            "compound_code" : "45HW+RP Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HW+RP"
+         },
+         "rating" : 3.5,
+         "reference" : "ChIJbVjtNjeuEmsRq-6prwTK24Y",
+         "scope" : "GOOGLE",
+         "types" : [ "lodging", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 110,
+         "vicinity" : "11 Pyrmont Bridge Rd, Sydney"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8708445,
+               "lng" : 151.1970831
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86971532010728,
+                  "lng" : 151.1983887798928
+               },
+               "southwest" : {
+                  "lat" : -33.87241497989272,
+                  "lng" : 151.1956891201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png",
+         "id" : "6adc38a3ffc07b46a434192f7bc9ea2d7791c9bc",
+         "name" : "DD Apartments Darling Harbour (Book Direct &amp; Save)",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 3655,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/110898048193939497266\"\u003eA Google User\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAroRgEKo8gF_faFb_GxP-m7W0np2is1s07An0v4cA_IENZiteA5eA-l5S6kKdiBesTBIHMHb8HOP_83JroaNyR5xKBEWV6EqT61lBWKQoP8jsxMbdjBdQPQY4i37Y3UJqEhAlxwafRFqdzwAba5PVuEQNGhTrv0zEQ7oujCFroT6pjvhtQ8S1zg",
+               "width" : 5290
+            }
+         ],
+         "place_id" : "ChIJfZ8FtjCuEmsRhdXXi0STSrE",
+         "plus_code" : {
+            "compound_code" : "45HW+MR Pyrmont, New South Wales, Australia",
+            "global_code" : "4RRH45HW+MR"
+         },
+         "rating" : 3.6,
+         "reference" : "ChIJfZ8FtjCuEmsRhdXXi0STSrE",
+         "scope" : "GOOGLE",
+         "types" : [ "lodging", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 27,
+         "vicinity" : "32-34 Bunn St, Pyrmont"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8701449,
+               "lng" : 151.1971842
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86875142010727,
+                  "lng" : 151.1985102798927
+               },
+               "southwest" : {
+                  "lat" : -33.87145107989272,
+                  "lng" : 151.1958106201073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "20171ab4313a753d607884bbc30d022a840e463c",
+         "name" : "The Retreat Thai &amp; Contemporary Massage Darling Harbour / Pyrmont",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 422,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/105480132710766278083\"\u003eThe Retreat Thai &amp;amp; Contemporary Massage\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRZAAAAeV2vQYn4RsLm9Xu7uswJXpLgPPAzXnuGtpCdMGkKBv-JeOjP90LsfhJ4vjlanZ59S4uQB7jQWrR_yB-90kuawBh8rTiwnRE8eXc6avSSBy9Osa6eAGppexiYfL5FfKLVEhD7m8YCvLRWkUIbKvQjljP3GhSdUd8J2ekCAITqo8mtAVsYbofKsg",
+               "width" : 750
+            }
+         ],
+         "place_id" : "ChIJRfJySDeuEmsRoLBTQ8eh-pc",
+         "plus_code" : {
+            "compound_code" : "45HW+WV Pyrmont, New South Wales, Australia",
+            "global_code" : "4RRH45HW+WV"
+         },
+         "rating" : 4.6,
+         "reference" : "ChIJRfJySDeuEmsRoLBTQ8eh-pc",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "user_ratings_total" : 55,
+         "vicinity" : "5/1-9 Pyrmont Bridge Rd, Pyrmont"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8716842,
+               "lng" : 151.1990239
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.87033427010728,
+                  "lng" : 151.2003707298927
+               },
+               "southwest" : {
+                  "lat" : -33.87303392989272,
+                  "lng" : 151.1976710701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "0131eb580b3e3b013191126e56c0e7bdc8a33bc9",
+         "name" : "Pakwaan Indian",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 3088,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/104776078532152149820\"\u003eMaksym Kozlenko\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAB8lG_Z6zf_3eVu6-gqDiobJ9teYObXiP9lrS-8z0Z2ufCq1nrhEzAotOiwa3vggfD_1jRzCvkBm6ZD26Dq5ggX73CTPhg8R2-e2Ejm1qo2l6LqAgGiGsRR9BltBh4VuNEhB0IKRItizU02TsN5gS8EGwGhQoqKPuRg7XwpUc5xIpLpUmOSFn2w",
+               "width" : 4160
+            }
+         ],
+         "place_id" : "ChIJp29FVjeuEmsRm40zgfh0fWY",
+         "plus_code" : {
+            "compound_code" : "45HX+8J Sydney, New South Wales, Australia",
+            "global_code" : "4RRH45HX+8J"
+         },
+         "rating" : 3.6,
+         "reference" : "ChIJp29FVjeuEmsRm40zgfh0fWY",
+         "scope" : "GOOGLE",
+         "types" : [
+            "meal_takeaway",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 157,
+         "vicinity" : "Harbourside Centre, 2-10 Darling Dr, Sydney"
+      },
+      {
+         "business_status" : "CLOSED_TEMPORARILY",
+         "geometry" : {
+            "location" : {
+               "lat" : -33.8705181,
+               "lng" : 151.2026297
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -33.86916827010727,
+                  "lng" : 151.2039795298927
+               },
+               "southwest" : {
+                  "lat" : -33.87186792989272,
+                  "lng" : 151.2012798701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "7abdbf8891048a08e0600e38b2c0b7b4787530b7",
+         "name" : "Captain Cook Cruises - Darling Harbour",
+         "permanently_closed" : true,
+         "photos" : [
+            {
+               "height" : 2848,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/114815847134966832971\"\u003eMy Eyes\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA5da1pfhpp_Sy_xddvV8o-Whs4czODMPYVJb20-piOoTgZTPsst2IZVuixHZkvkWGbeAWLgCEdvgKUoypPJpTcY9aJ2vFDf4W_cNtwVfDRRxZfSljCTfPF9LSN309_Dm7EhB1fu4nCRHDEETXf_AI7-P4GhRsw3SAvAUpsL3_IiJp3crdE-7nWg",
+               "width" : 4272
+            }
+         ],
+         "place_id" : "ChIJnXQEP0KuEmsRI9MSdDaXQNU",
+         "plus_code" : {
+            "compound_code" : "46H3+Q3 Sydney, New South Wales, Australia",
+            "global_code" : "4RRH46H3+Q3"
+         },
+         "rating" : 3.8,
+         "reference" : "ChIJnXQEP0KuEmsRI9MSdDaXQNU",
+         "scope" : "GOOGLE",
+         "types" : [
+            "tourist_attraction",
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 114,
+         "vicinity" : "Pier 26, Darling Harbour, Sydney"
+      }
+   ],
+   "status" : "OK"
+}
+</msg>
+<status status="PASS" starttime="20200429 18:53:33.447" endtime="20200429 18:53:33.451"></status>
+</kw>
+<tags>
+<tag>g</tag>
+</tags>
+<status status="PASS" starttime="20200429 18:53:32.394" endtime="20200429 18:53:33.452" critical="yes"></status>
+</test>
+<doc>Suite description</doc>
+<status status="PASS" starttime="20200429 18:53:31.820" endtime="20200429 18:53:33.455"></status>
+</suite>
+<status status="PASS" starttime="20200429 18:53:31.746" endtime="20200429 18:53:33.460"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">g</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Scripts">Scripts</stat>
+<stat pass="1" fail="0" id="s1-s1" name="GoogleMapsAPI">Scripts.GoogleMapsAPI</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
